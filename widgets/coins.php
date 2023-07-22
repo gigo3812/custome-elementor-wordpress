@@ -29,8 +29,25 @@ class Elementor_coins_Widget extends \Elementor\Widget_Base
 
 	protected function render()
 	{
+
+		global $wpdb;
+		$table_name = $wpdb->prefix . 'coins';
+
+		$coins = $wpdb->get_results(
+			"SELECT * FROM $table_name"
+		);
+
+
 ?>
 		<form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+			<select name="coin" id="">
+				<?php
+				foreach ($coins as $coin) {
+					echo '<option value=' . $coin->coin_name . '>' . $coin->coin_name . '</option>';
+				}
+
+				?>
+			</select>
 			<input type="text" name="coin_value" placeholder="Enter the coin name...">
 			<button type="submit">Get Price</button>
 			<input type="hidden" name="action" value="code_trend_form_submission">
