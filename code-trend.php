@@ -15,9 +15,7 @@ add_action('elementor/widgets/widgets_registered', 'register_coins');
 add_action('admin_post_code_trend_form_submission', 'handle_form_submission');
 
 // create table
-register_activation_hook(__FILE__, 'code_trend_create_coins_table');
-// fake data
-register_activation_hook(__FILE__, 'code_trend_insert_sample_data');
+register_activation_hook(__FILE__, 'code_trend_activate_plugin');
 
 
 
@@ -43,24 +41,39 @@ function register_coins($widgets_manager)
 }
 
 /** -------------------------------------------- Start data base----------------------------- */
-// Create the custom table during plugin activation
-function code_trend_create_coins_table()
+// Function to be executed on plugin activation
+function code_trend_activate_plugin()
 {
-	global $wpdb;
-	$table_name = $wpdb->prefix . 'coins';
+	code_trend_create_coins_table();
+	code_trend_insert_sample_data();
+}
 
-	// SQL query to create the table
-	$sql = "CREATE TABLE $table_name (
+// Create the custom table during plugin activation
+function code_trend_create_coins_table() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'coins';
+
+    // Set the charset and collation for the table
+    $charset_collate = $wpdb->get_charset_collate();
+
+    // If get_charset_collate() is not available, you can use a default value
+    if ( empty( $charset_collate ) ) {
+        $charset_collate = 'DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci';
+    }
+
+    // SQL query to create the table
+    $sql = "CREATE TABLE IF NOT EXISTS $table_name (
         id INT(11) NOT NULL AUTO_INCREMENT,
         coin_name VARCHAR(100) NOT NULL,
         coin_value DECIMAL(12, 2) NOT NULL,
         PRIMARY KEY (id)
-    ) $wpdb->get_charset_collate();";
+    ) $charset_collate;";
 
-	// Load the dbDelta() function to create the table
-	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-	dbDelta($sql);
+    // Load the dbDelta() function to create the table
+    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+    dbDelta( $sql );
 }
+
 
 // Insert sample data during plugin activation
 function code_trend_insert_sample_data()
