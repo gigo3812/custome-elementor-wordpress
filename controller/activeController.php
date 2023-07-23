@@ -43,10 +43,9 @@ function add_elementor_widget_categories($elements_manager)
 //  mount widget coins
 function register_coins($widgets_manager)
 {
+	require_once plugin_dir_path(__FILE__) . '../index.php';
 
-	require_once(__DIR__ . '/widgets/coins.php');
-
-	$widgets_manager->register_widget_type(new \Elementor_coins_Widget());
+	$widgets_manager->register_widget_type(new \Elementor_index());
 }
 /** -------------------------------------------- End make category code trend and widget----------------------------- */
 

@@ -1,5 +1,5 @@
 <?php
-class Elementor_coins_Widget extends \Elementor\Widget_Base
+class Elementor_index extends \Elementor\Widget_Base
 {
 
 	public function get_name()
@@ -51,7 +51,8 @@ class Elementor_coins_Widget extends \Elementor\Widget_Base
 				</select>
 				<input type="text" name="coin_value" placeholder="Enter the coin name...">
 				<button type="submit">Get Price</button>
-				<input type="hidden" name="action" value="code_trend_form_submission">
+				<input type="text" name="method">
+				<input type="hidden" name="action" value="code_trend_plugin">
 			</form>
 		</div>
 <?php

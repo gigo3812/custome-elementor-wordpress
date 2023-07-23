@@ -1,14 +1,33 @@
 <?php
 
 // action submit
-add_action('admin_post_code_trend_form_submission', 'handle_form_submission');
+add_action('admin_post_code_trend_plugin', 'action');
 
+/** action detector */
+function action()
+{
+	$method = $_POST['method'];
+	switch ($method) {
+		case 'test':
+			test('test 1');
+			break;
+		case 'test2':
+			test('test 22');
+			break;
+		default:
+			handle_form_submission();
+			break;
+	}
+}
 
+function test($code)
+{
+	return print($code);
+}
 /** -------------------------------------------- Start Submit form----------------------------- */
 /** submit form */
 function handle_form_submission()
 {
-	return print(__FILE__);
 	if (isset($_POST['coin_input'])) {
 		$coin_name = sanitize_text_field($_POST['coin_input']);
 

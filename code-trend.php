@@ -13,6 +13,6 @@ register_activation_hook(__FILE__, 'code_trend_activate_plugin');
 
 
 
-require_once plugin_dir_path(__FILE__) . 'allFunctionController.php';
-require_once plugin_dir_path(__FILE__) . 'activeController.php';
-require_once plugin_dir_path(__FILE__) . 'inactiveController.php';
+require_once plugin_dir_path(__FILE__) . 'controller/allFunctionController.php';
+require_once plugin_dir_path(__FILE__) . 'controller/activeController.php';
+require_once plugin_dir_path(__FILE__) . 'controller/inactiveController.php';
