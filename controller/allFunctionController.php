@@ -8,31 +8,38 @@ function action()
 {
 	$method = $_POST['method'];
 	switch ($method) {
-		case 'test':
-			test('test 1');
+		case 'coins':
+			$req = coins();
 			break;
-		case 'test2':
-			test('test 22');
+		case 'submit':
+			$req = submit();
 			break;
 		default:
-			handle_form_submission();
+			$req = 'eror';
 			break;
 	}
+	return var_dump($req);
 }
 
-function test($code)
+function coins()
 {
-	return print($code);
+	global $wpdb;
+	$table_name = $wpdb->prefix . 'coins';
+	$query = "SELECT * FROM $table_name";
+	$results = $wpdb->get_results($query, ARRAY_A);
+	// Output the price data
+	return $results;
 }
+
 /** -------------------------------------------- Start Submit form----------------------------- */
 /** submit form */
-function handle_form_submission()
+function submit()
 {
 	if (isset($_POST['coin_input'])) {
 		$coin_name = sanitize_text_field($_POST['coin_input']);
 
 		global $wpdb;
-		$table_name = $wpdb->prefix . 'coin_data';
+		$table_name = $wpdb->prefix . 'coins';
 
 		$price_data = $wpdb->get_var(
 			$wpdb->prepare(

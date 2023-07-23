@@ -51,7 +51,7 @@ class Elementor_index extends \Elementor\Widget_Base
 				</select>
 				<input type="text" name="coin_value" placeholder="Enter the coin name...">
 				<button type="submit">Get Price</button>
-				<input type="text" name="method">
+				<input type="text" name="method" >
 				<input type="hidden" name="action" value="code_trend_plugin">
 			</form>
 		</div>
