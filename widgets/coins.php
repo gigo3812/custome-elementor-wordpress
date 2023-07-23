@@ -39,19 +39,21 @@ class Elementor_coins_Widget extends \Elementor\Widget_Base
 
 
 ?>
-		<form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
-			<select name="coin" id="">
-				<?php
-				foreach ($coins as $coin) {
-					echo '<option value=' . $coin->coin_name . '>' . $coin->coin_name . '</option>';
-				}
+		<div id='codeTrendApp'>
+			<form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+				<select name="coin" id="">
+					<?php
+					foreach ($coins as $coin) {
+						echo '<option value=' . $coin->coin_name . '>' . $coin->coin_name . '</option>';
+					}
 
-				?>
-			</select>
-			<input type="text" name="coin_value" placeholder="Enter the coin name...">
-			<button type="submit">Get Price</button>
-			<input type="hidden" name="action" value="code_trend_form_submission">
-		</form>
+					?>
+				</select>
+				<input type="text" name="coin_value" placeholder="Enter the coin name...">
+				<button type="submit">Get Price</button>
+				<input type="hidden" name="action" value="code_trend_form_submission">
+			</form>
+		</div>
 <?php
 	}
 }
