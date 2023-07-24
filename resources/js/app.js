@@ -1,7 +1,5 @@
 import { createApp } from 'vue'
 
-import '../scss/public.scss'
-
 //**MultiSelect */
 import vueMultiselect from 'vue-multiselect'
 
@@ -11,7 +9,7 @@ const App = createApp({
       activeSlider: false,
 
       //** money pay input */
-      moneyPay: '321',
+      moneyPay: '',
 
       //**Multiselect value and options */
       coinSelectedToPay: { id: 2,asset:'435.21',networkFee:'1', coin: 'USDT', coinImg:'http://localhost:8080/assets/img/coins/USDT.svg', min:'20', FaName:'تتر'  },
@@ -25,7 +23,6 @@ const App = createApp({
       ],
 
       selectedCoinId: null,
-      secondSelectOptions: [],
       coinSelectedToPayToBuy:'',
       youGet:null
 
@@ -46,26 +43,12 @@ const App = createApp({
         this.coinSelectedToPay = temp;
       }
     },
-    onFirstSelectChange() {
-      this.selectedCoinId = this.coinSelectedToPay.id
-      if (this.selectedCoinId) {      
-        const selectedItem = this.coins.find(item => item.id === this.selectedCoinId);
-        if (selectedItem) {
-          const index = this.coins.indexOf(selectedItem);
-          if (index !== -1) {
-            this.coins.splice(index, 1);
-          }
-        }
-      }
-      
-      this.secondSelectOptions = [...this.coins];
-    }
   },
   mounted() {
     console.log('run vue 3');
   },
   components: {
     vueMultiselect,
-  }
+  },
 })
 App.mount('#codeTrendApp')

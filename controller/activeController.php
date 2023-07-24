@@ -4,7 +4,7 @@ add_action('elementor/elements/categories_registered', 'add_elementor_widget_cat
 add_action('elementor/widgets/widgets_registered', 'register_coins');
 
 /** vue file added */
-add_action('wp_enqueue_scripts', 'code_trend_enqueue_vue3');
+add_action('wp_enqueue_scripts', 'loadAssetJsAndCss');
 
 /** Cron Job Callback Function */
 add_action('code_trend_fetch_coin_data_event', 'code_trend_fetch_coin_data');
@@ -171,11 +171,12 @@ function code_trend_fetch_coin_data()
 /** -------------------------------------------- End Api and CronJob get data from api----------------------------- */
 
 /** -------------------------------------------- Start Added Vue 3 ----------------------------- */
-function code_trend_enqueue_vue3()
+function loadAssetJsAndCss()
 {
-	// Enqueue Vue 3 from 'node_modules' folder
-	wp_enqueue_script('vue3', plugin_dir_url(__FILE__) . 'assets/node_modules/vue@next/dist/vue.global.js', array(), '3.0.0', true);
-	// Enqueue your Vue component file
-	wp_enqueue_script('my-component', plugin_dir_url(__FILE__) . 'assets/my-component.js', array('vue3'), '1.0.0', true);
+	$path = plugin_dir_url(__FILE__);
+	$path = str_replace('controller/', '', $path);
+	wp_enqueue_script('code-trend-vue3', $path . '/assets/js/app.js', array(), '3.0.0', true);
+	wp_enqueue_style('code-trend-style',  $path . '/assets/css/public.css', array(), '1.0.0');
+	wp_enqueue_style('multi-select-style',  $path . '/assets/css/multi-select.css', array(), '1.0.0');
 }
 /** -------------------------------------------- End Added Vue 3 ----------------------------- */
