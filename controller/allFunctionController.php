@@ -1,34 +1,46 @@
 <?php
 
-// action submit
-add_action('admin_post_code_trend_plugin', 'action');
+add_action('admin_post_code_trend_action', 'action');
 
 /** action detector */
 function action()
 {
 	$method = $_POST['method'];
 	switch ($method) {
-		case 'coins':
-			$req = coins();
+		case 'getCoins':
+			$res = getCoins();
 			break;
 		case 'submit':
-			$req = submit();
+			$res = submit();
 			break;
 		default:
-			$req = 'eror';
-			break;
+			$res = [
+				'status' => 500,
+				'message' => 'no command found'
+			];
 	}
-	return var_dump($req);
+    wp_send_json($res, $res['status']);
 }
 
-function coins()
+function getCoins()
 {
-	global $wpdb;
-	$table_name = $wpdb->prefix . 'coins';
-	$query = "SELECT * FROM $table_name";
-	$results = $wpdb->get_results($query, ARRAY_A);
-	// Output the price data
-	return $results;
+	try {
+		global $wpdb;
+		$table_name = $wpdb->prefix . 'coins';
+		$query = "SELECT * FROM $table_name";
+		$results = $wpdb->get_results($query, ARRAY_A);
+		return [
+			'status' => 200,
+			'message' => 'success',
+			'coins' => $results
+		];
+	} catch (\Throwable $th) {
+		return [
+			'status' => 500,
+			'message' => 'faild',
+			'error' => $th
+		];
+	}
 }
 
 /** -------------------------------------------- Start Submit form----------------------------- */

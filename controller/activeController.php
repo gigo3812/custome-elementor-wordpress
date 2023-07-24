@@ -178,5 +178,9 @@ function loadAssetJsAndCss()
 	wp_enqueue_script('code-trend-vue3', $path . '/assets/js/app.js', array(), '3.0.0', true);
 	wp_enqueue_style('code-trend-style',  $path . '/assets/css/public.css', array(), '1.0.0');
 	wp_enqueue_style('multi-select-style',  $path . '/assets/css/multi-select.css', array(), '1.0.0');
+
+	/** set url  */
+	$code_trend_url = esc_url(admin_url('admin-post.php'));
+	wp_add_inline_script('code-trend-vue3', 'const apiUrl = "' . $code_trend_url . '";', 'before');
 }
 /** -------------------------------------------- End Added Vue 3 ----------------------------- */
