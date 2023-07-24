@@ -24,37 +24,6 @@
           <vue-multiselect class="text-right" placeholder="انتخاب ارز" v-model="coinSelectedToPay" :show-labels="false" :options="coins" :searchable="false" :allow-empty="false" :custom-label="customLabel" track-by="coin">
           </vue-multiselect>
         </div>
-        <div class="info-text-cnt">
-          <!-- right side -->
-          <div class="right-side">
-            <p class="assets-text">
-              کل موجودی
-            </p>
-            <p class="coin-asset">
-              {{coinSelectedToPay.asset}}
-            </p>
-            <p class="choose" @click="selectAssets">
-              انتخاب
-            </p>
-          </div>
-
-          <!-- left side -->
-          <div class="left-side" v-if="coinSelectedToPay">
-            <div class="info icon">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 4.13401 4.13401 1 8 1C11.866 1 15 4.13401 15 8Z" fill="white" />
-                <path d="M7.3 6.6H8V11.5M15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 4.13401 4.13401 1 8 1C11.866 1 15 4.13401 15 8Z" stroke="#323E96" stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <circle cx="8" cy="4" r="1" fill="#323E96" fill-opacity="0.5" />
-              </svg>
-            </div>
-            <p class="info-text">
-              حداقل خرید
-            </p>
-            <p class="coin-info">
-              {{coinSelectedToPay.min}} {{coinSelectedToPay.FaName}}
-            </p>
-          </div>
-        </div>
       </div>
 
       <!-- return icon -->

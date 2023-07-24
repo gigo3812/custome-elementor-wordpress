@@ -1,20 +1,20 @@
 @font-face {
   font-family: "IRANYekan";
-  src: url(/fonts/IRANYekan-Medium.woff?9c78b97ef5b1f81922e9015a99c49371) format("woff");
+  src: url("/wp-content/plugins/code-trend/assets/fonts/IRANYekan-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "IRANYekan";
-  src: url(/fonts/IRANYekan.woff?f01e9ae5ea918523d370142f38934b49) format("woff");
+  src: url("/wp-content/plugins/code-trend/assets/fonts/IRANYekan.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "IRANYekan";
-  src: url(/fonts/IRANYekan-Light.woff?b29cf05ee1d8c79734a5269838332fde) format("woff");
+  src: url("/wp-content/plugins/code-trend/assets/fonts/IRANYekan-Light.woff") format("woff");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
