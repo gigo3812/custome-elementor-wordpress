@@ -43,7 +43,7 @@ function add_elementor_widget_categories($elements_manager)
 //  mount widget coins
 function register_coins($widgets_manager)
 {
-	require_once plugin_dir_path(__FILE__) . '../index.php';
+	require_once plugin_dir_path(__FILE__) . '../config.php';
 
 	$widgets_manager->register_widget_type(new \Elementor_index());
 }
