@@ -1,0 +1,116 @@
+
+//** Iran Yekan fonts/
+@font-face {
+    font-family: "IRANYekan";
+    src: url("../../assets/fonts/IRANYekan-Medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "IRANYekan";
+    src: url("../../assets/fonts/IRANYekan.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "IRANYekan";
+    src: url("../../assets/fonts/IRANYekan-Light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+div{
+    font-family: 'IRANYekan' !important;
+}
+
+// button
+button {
+  outline: none !important;
+}
+
+input,
+textarea,
+button,
+select,
+img,
+a { 
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+input[type='text'],
+input[type='tel'],
+input[type='password'],
+input[type='textarea'],
+input[type='email'],
+input[type='search'] {
+  border: none;
+  outline: none;
+  color: var(--gray);
+  user-select: auto;
+  transition: none !important;
+  /* Standard syntax */
+  -webkit-appearance: none !important;
+  -webkit-user-select: auto;
+  /* Chrome, Opera, Safari */
+  -moz-user-select: auto;
+  /* Firefox 2+ */
+  -ms-user-select: auto;  
+
+}
+
+input:focus {
+  outline: none;
+}
+
+img{
+  user-zoom: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+img.img-match{
+  width: 100% !important;
+  height: 100% !important;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
+}
+
+/* multiselect */
+.multiselect{
+    width: 130px !important;
+    cursor:pointer;
+}
+
+.multiselect .multiselect__select{
+    width: 33px;
+    height: 33px;
+    left: 0px;
+    padding: 4px 8px;
+}
+
+.multiselect__tags{
+    background: #ECF1F9 !important;
+    border: 1px solid #ECF1F9 !important;
+    min-height: 30px !important;
+    padding: 5px 8px 0 30px !important;
+}
+
+.multiselect__tags .multiselect__placeholder{
+    margin-bottom:5px;
+}
+
+.multiselect__option--highlight,
+.multiselect__single{
+    color: #000 !important;
+    background: transparent !important;
+}

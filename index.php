@@ -29,32 +29,13 @@ class Elementor_index extends \Elementor\Widget_Base
 
 	protected function render()
 	{
+		// Get the path to the template.html file in your plugin's directory
+		$template_path = plugin_dir_path(__FILE__) . '/resources/view/index.php';
 
-		global $wpdb;
-		$table_name = $wpdb->prefix . 'coins';
-
-		$coins = $wpdb->get_results(
-			"SELECT * FROM $table_name"
-		);
-
-
-?>
-		<div id='codeTrendApp'>
-			<form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
-				<select name="coin" id="">
-					<?php
-					foreach ($coins as $coin) {
-						echo '<option value=' . $coin->coin_name . '>' . $coin->coin_name . '</option>';
-					}
-
-					?>
-				</select>
-				<input type="text" name="coin_value" placeholder="Enter the coin name...">
-				<button type="submit">Get Price</button>
-				<input type="text" name="method" >
-				<input type="hidden" name="action" value="code_trend_plugin">
-			</form>
-		</div>
-<?php
+		// Check if the template file exists
+		if (file_exists($template_path)) {
+			// Output the content of the template file
+			include $template_path;
+		}
 	}
 }
